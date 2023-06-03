@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  frontend:
+    depends_on:
+      - backend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - 3000:7000
+    volumes:
+      - ./frontend:/opt/app
+    command: sh -c "npm rebuild esbuild && npm run dev"
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - 7100:7100
+    volumes:
+      - ./backend:/opt/app
