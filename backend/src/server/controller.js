@@ -6,9 +6,9 @@ export const validate = async (req, res) => {
     return res.status(404).json({ error: "Invalid body" });
   }
 
-  let { PAN, CVV, month, year } = req.body;
+  let { PAN: pan, CVV: cvv, month, year } = req.body;
 
-  let errorFields = validateCreditCardFormat({ CVV, PAN, month, year });
+  let errorFields = validateCreditCardFormat({ cvv, month, pan, year });
 
   if (errorFields.length) {
     return res
@@ -16,7 +16,7 @@ export const validate = async (req, res) => {
       .json({ error: "Please fill the fields correctly", errorFields });
   }
 
-  let errorsValidation = ccValidationAlgorithm({ CVV, month, PAN, year });
+  let errorsValidation = ccValidationAlgorithm({ cvv, month, pan, year });
   if (errorsValidation.length) {
     return res.status(404).json({ valid: false, errorsValidation });
   }

@@ -1,20 +1,20 @@
-const validateCreditCardFormat = ({ CVV, month, PAN, year }) => {
+const validateCreditCardFormat = ({ cvv, month, pan, year }) => {
   let errors = [];
-  if (!isCVVValid(CVV)) errors.push("CVV");
+  if (!isCVVValid(cvv)) errors.push("CVV");
 
   if (!isMonthValid(month)) errors.push("month");
 
-  if (!isPANValid(PAN)) errors.push("PAN");
+  if (!isPANValid(pan)) errors.push("PAN");
 
   if (!isYearValid(year)) errors.push("year");
 
   return errors;
 };
 
-const isCVVValid = (CVV) => {
-  if (isNaN(CVV)) return false;
+const isCVVValid = (cvv) => {
+  if (isNaN(cvv)) return false;
 
-  if (CVV.length < 3 || 4 < CVV.length) return false;
+  if (cvv.length < 3 || 4 < cvv.length) return false;
 
   return true;
 };
@@ -28,14 +28,14 @@ const isMonthValid = (month) => {
   return true;
 };
 
-const isPANValid = (PAN) => {
-  let allDigitsNumber = PAN.split("").every((d) => {
+const isPANValid = (pan) => {
+  let allDigitsNumber = pan.split("").every((d) => {
     let number = parseInt(d);
     return Number.isInteger(number);
   });
   if (!allDigitsNumber) return false;
 
-  if (PAN.length < 15 || 19 < PAN.length) return false;
+  if (pan.length < 15 || 19 < pan.length) return false;
 
   return true;
 };

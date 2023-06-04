@@ -82,8 +82,8 @@ describe("Credit card information", () => {
   test("1853925719561745, 342, 03/34 is a valid Credit card information", () => {
     expect(
       validateCreditCardFormat({
-        PAN: "1853925719561745",
-        CVV: "342",
+        pan: "1853925719561745",
+        cvv: "342",
         month: "03",
         year: "34",
       }).length
@@ -92,7 +92,7 @@ describe("Credit card information", () => {
   test("936618593f692835968, 6574, 09/43 is not a valid Credit card information", () => {
     expect(
       validateCreditCardFormat({
-        PAN: "936618593f692835968", //
+        pan: "936618593f692835968", //
         CVV: "6574",
         month: "09",
         year: "43",
@@ -102,8 +102,8 @@ describe("Credit card information", () => {
   test("835816486937178543, 3b4, 01/27 is not a valid Credit card information", () => {
     expect(
       validateCreditCardFormat({
-        PAN: "835816486937178543",
-        CVV: "3b4", //
+        pan: "835816486937178543",
+        cvv: "3b4", //
         month: "01",
         year: "27",
       })
@@ -112,8 +112,8 @@ describe("Credit card information", () => {
   test("6491839582817482, 8594, 14/75 is not a valid Credit card information", () => {
     expect(
       validateCreditCardFormat({
-        PAN: "6491839582817482",
-        CVV: "8594",
+        pan: "6491839582817482",
+        cvv: "8594",
         month: "14", //
         year: "75",
       })
@@ -122,8 +122,8 @@ describe("Credit card information", () => {
   test("482756184927384595, 581, 05/203 is not a valid Credit card information", () => {
     expect(
       validateCreditCardFormat({
-        PAN: "482756184927384595",
-        CVV: "581",
+        pan: "482756184927384595",
+        cvv: "581",
         month: "05",
         year: "203", //
       })

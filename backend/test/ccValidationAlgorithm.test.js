@@ -27,27 +27,27 @@ describe("Expiry Date", () => {
 // Expect PAN and CVV formats to be correct
 describe("Security Code", () => {
   test("5724851966483525, 342 is a valid Security Code", () => {
-    expect(checkSecurityCode({ PAN: "5724851966483525", CVV: "342" })).toBe(
+    expect(checkSecurityCode({ pan: "5724851966483525", cvv: "342" })).toBe(
       true
     );
   });
   test("3717589285827475172, 3253 is a valid Security Code", () => {
-    expect(checkSecurityCode({ PAN: "3717589285827475172", CVV: "3253" })).toBe(
+    expect(checkSecurityCode({ pan: "3717589285827475172", cvv: "3253" })).toBe(
       true
     );
   });
   test("34123871298739834, 1349 is a valid Security Code", () => {
-    expect(checkSecurityCode({ PAN: "34123871298739834", CVV: "1349" })).toBe(
+    expect(checkSecurityCode({ pan: "34123871298739834", cvv: "1349" })).toBe(
       true
     );
   });
   test("341238712987398343, 771 is not a valid Security Code", () => {
-    expect(checkSecurityCode({ PAN: "34123871298739834", CVV: "771" })).toBe(
+    expect(checkSecurityCode({ pan: "34123871298739834", cvv: "771" })).toBe(
       false
     );
   });
   test("5724851966483525, 8234 is not a valid Security Code", () => {
-    expect(checkSecurityCode({ PAN: "5724851966483525", CVV: "8234" })).toBe(
+    expect(checkSecurityCode({ pan: "5724851966483525", cvv: "8234" })).toBe(
       false
     );
   });
@@ -56,19 +56,19 @@ describe("Security Code", () => {
 // Expect PAN format to be correct
 describe("Luhm algorithm", () => {
   test("79927398713 is valid", () => {
-    expect(checkLuhnAlgorithm({ PAN: "79927398713" })).toBe(true);
+    expect(checkLuhnAlgorithm({ pan: "79927398713" })).toBe(true);
   });
   test("45320151128336 is valid", () => {
-    expect(checkLuhnAlgorithm({ PAN: "45320151128336" })).toBe(true);
+    expect(checkLuhnAlgorithm({ pan: "45320151128336" })).toBe(true);
   });
   test("378734493671000 is valid", () => {
-    expect(checkLuhnAlgorithm({ PAN: "378734493671000" })).toBe(true);
+    expect(checkLuhnAlgorithm({ pan: "378734493671000" })).toBe(true);
   });
   test("4309678002102088 is valid", () => {
-    expect(checkLuhnAlgorithm({ PAN: "4309678002102088" })).toBe(true);
+    expect(checkLuhnAlgorithm({ pan: "4309678002102088" })).toBe(true);
   });
   test("378734493671000 is valid", () => {
-    expect(checkLuhnAlgorithm({ PAN: "378734493671000" })).toBe(true);
+    expect(checkLuhnAlgorithm({ pan: "378734493671000" })).toBe(true);
   });
 });
 
@@ -76,8 +76,8 @@ describe("Credit Card Validation Algorithm", () => {
   test("79927398713, 342, 03/34 is valid", () => {
     expect(
       ccValidationAlgorithm({
-        PAN: "79927398713",
-        CVV: "342",
+        pan: "79927398713",
+        cvv: "342",
         month: "03",
         year: "34",
       }).length
@@ -86,8 +86,8 @@ describe("Credit Card Validation Algorithm", () => {
   test("378734493671000, 9562, 03/34 is valid", () => {
     expect(
       ccValidationAlgorithm({
-        PAN: "378734493671000",
-        CVV: "9562",
+        pan: "378734493671000",
+        cvv: "9562",
         month: "03",
         year: "34",
       }).length
@@ -96,8 +96,8 @@ describe("Credit Card Validation Algorithm", () => {
   test("371449635398430, 3432, 03/34 is not valid (Luhm Algorithm)", () => {
     expect(
       ccValidationAlgorithm({
-        PAN: "371449635398430", //
-        CVV: "3432",
+        pan: "371449635398430", //
+        cvv: "3432",
         month: "03",
         year: "34",
       })
@@ -106,18 +106,18 @@ describe("Credit Card Validation Algorithm", () => {
   test("45320151128336, is not valid (year)", () => {
     expect(
       ccValidationAlgorithm({
-        PAN: "45320151128336",
-        CVV: "432",
+        pan: "45320151128336",
+        cvv: "432",
         month: "08",
         year: "05", //
       })
-    ).toContain("ExpiryData");
+    ).toContain("ExpiryDate");
   });
   test("4309678002102088, 7284, 05/45 is not valid (Security Code)", () => {
     expect(
       ccValidationAlgorithm({
-        PAN: "4309678002102088",
-        CVV: "7284", //
+        pan: "4309678002102088",
+        cvv: "7284", //
         month: "05",
         year: "45",
       })
