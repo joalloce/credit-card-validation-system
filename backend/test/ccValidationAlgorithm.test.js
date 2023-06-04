@@ -5,7 +5,7 @@ import {
   checkLuhnAlgorithm,
 } from "#root/creditCardValidation/ccValidationAlgorithm";
 
-//month and year formats are correct
+// Expect month and year formats are correct
 describe("Expiry Date", () => {
   test("03/28 is a valid Date", () => {
     expect(checkExpiryDate({ month: "03", year: "28" })).toBe(true);
@@ -24,7 +24,7 @@ describe("Expiry Date", () => {
   });
 });
 
-// PAN and CVV formats are correct
+// Expect PAN and CVV formats to be correct
 describe("Security Code", () => {
   test("5724851966483525, 342 is a valid Security Code", () => {
     expect(checkSecurityCode({ PAN: "5724851966483525", CVV: "342" })).toBe(
@@ -96,7 +96,7 @@ describe("Credit Card Validation Algorithm", () => {
   test("371449635398430, 3432, 03/34 is not valid (Luhm Algorithm)", () => {
     expect(
       ccValidationAlgorithm({
-        PAN: "371449635398430",
+        PAN: "371449635398430", //
         CVV: "3432",
         month: "03",
         year: "34",
@@ -109,7 +109,7 @@ describe("Credit Card Validation Algorithm", () => {
         PAN: "45320151128336",
         CVV: "432",
         month: "08",
-        year: "05",
+        year: "05", //
       })
     ).toContain("ExpiryData");
   });
@@ -117,7 +117,7 @@ describe("Credit Card Validation Algorithm", () => {
     expect(
       ccValidationAlgorithm({
         PAN: "4309678002102088",
-        CVV: "7284",
+        CVV: "7284", //
         month: "05",
         year: "45",
       })
