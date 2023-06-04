@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "85e340ff-fbbb-4e23-8fca-edce488141d6",
+		"name": "credit-card-validation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6622352"
+	},
+	"item": [
+		{
+			"name": "validateCreditCard Invalid Body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"6491839582817482\",\r\n    \"CVV\": \"8594\",\r\n    \"month\": \"14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateCreditCard Invalid Fields",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"835816486937178543\",\r\n    \"CVV\": \"3b4\",\r\n    \"month\": \"02\",\r\n    \"year\": \"32\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateCreditCard Invalid Fields 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"936618593f692835968\",\r\n    \"CVV\": \"123\",\r\n    \"month\": \"02\",\r\n    \"year\": \"332\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateCreditCard Failed Validation Algorithm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"122342332772\",\r\n    \"CVV\": \"123\",\r\n    \"month\": \"02\",\r\n    \"year\": \"32\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateCreditCard Failed Validation Algorithm 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"4309678002102088\",\r\n    \"CVV\": \"8132\",\r\n    \"month\": \"11\",\r\n    \"year\": \"34\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateCreditCard Validation Algorithm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"371449635398430\",\r\n    \"CVV\": \"3432\",\r\n    \"month\": \"03\",\r\n    \"year\": \"34\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validateCreditCard Validation Algorithm 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PAN\": \"4309678002102088\",\r\n    \"CVV\": \"342\",\r\n    \"month\": \"03\",\r\n    \"year\": \"25\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7100/api/credit-card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7100",
+					"path": [
+						"api",
+						"credit-card"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

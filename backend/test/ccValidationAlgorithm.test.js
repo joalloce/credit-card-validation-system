@@ -1,26 +1,26 @@
 import {
   ccValidationAlgorithm,
-  checkExpiryData,
+  checkExpiryDate,
   checkSecurityCode,
   checkLuhnAlgorithm,
 } from "#root/creditCardValidation/ccValidationAlgorithm";
 
 //month and year formats are correct
-describe("Expiry Data", () => {
+describe("Expiry Date", () => {
   test("03/28 is a valid Date", () => {
-    expect(checkExpiryData({ month: "03", year: "28" })).toBe(true);
+    expect(checkExpiryDate({ month: "03", year: "28" })).toBe(true);
   });
   test("12/23 is a valid Date", () => {
-    expect(checkExpiryData({ month: "12", year: "23" })).toBe(true);
+    expect(checkExpiryDate({ month: "12", year: "23" })).toBe(true);
   });
   test("04/19 is not a valid Date", () => {
-    expect(checkExpiryData({ month: "04", year: "19" })).toBe(false);
+    expect(checkExpiryDate({ month: "04", year: "19" })).toBe(false);
   });
   test("03/23 is not a valid Date", () => {
-    expect(checkExpiryData({ month: "03", year: "23" })).toBe(false);
+    expect(checkExpiryDate({ month: "03", year: "23" })).toBe(false);
   });
   test("18/05 is not a valid Date", () => {
-    expect(checkExpiryData({ month: "18", year: "05" })).toBe(false);
+    expect(checkExpiryDate({ month: "18", year: "05" })).toBe(false);
   });
 });
 
@@ -53,7 +53,7 @@ describe("Security Code", () => {
   });
 });
 
-// PAN format are correct
+// Expect PAN format to be correct
 describe("Luhm algorithm", () => {
   test("79927398713 is valid", () => {
     expect(checkLuhnAlgorithm({ PAN: "79927398713" })).toBe(true);
@@ -83,17 +83,17 @@ describe("Credit Card Validation Algorithm", () => {
       }).length
     ).toBe(0);
   });
-  test("378734493671000, 3432, 03/34 is valid", () => {
+  test("378734493671000, 9562, 03/34 is valid", () => {
     expect(
       ccValidationAlgorithm({
         PAN: "378734493671000",
-        CVV: "3432",
+        CVV: "9562",
         month: "03",
         year: "34",
       }).length
     ).toBe(0);
   });
-  test("371449635398430, 3432, 03/34 is not valid", () => {
+  test("371449635398430, 3432, 03/34 is not valid (Luhm Algorithm)", () => {
     expect(
       ccValidationAlgorithm({
         PAN: "371449635398430",
@@ -103,7 +103,7 @@ describe("Credit Card Validation Algorithm", () => {
       })
     ).toContain("LuhnAlgorithm");
   });
-  test("45320151128336, is valid", () => {
+  test("45320151128336, is not valid (year)", () => {
     expect(
       ccValidationAlgorithm({
         PAN: "45320151128336",
@@ -113,7 +113,7 @@ describe("Credit Card Validation Algorithm", () => {
       })
     ).toContain("ExpiryData");
   });
-  test("4309678002102088, 7284, 05/45 is valid", () => {
+  test("4309678002102088, 7284, 05/45 is not valid (Security Code)", () => {
     expect(
       ccValidationAlgorithm({
         PAN: "4309678002102088",

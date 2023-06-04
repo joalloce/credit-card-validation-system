@@ -1,7 +1,7 @@
 const ccValidationAlgorithm = ({ CVV, month, PAN, year }) => {
   let errors = [];
 
-  if (!checkExpiryData({ month, year })) errors.push("ExpiryData");
+  if (!checkExpiryDate({ month, year })) errors.push("ExpiryDate");
 
   if (!checkSecurityCode({ PAN, CVV })) errors.push("SecurityCode");
 
@@ -11,7 +11,7 @@ const ccValidationAlgorithm = ({ CVV, month, PAN, year }) => {
 };
 
 // The expiry date of the credit card (year and month) must be AFTER present time
-const checkExpiryData = ({ month, year }) => {
+const checkExpiryDate = ({ month, year }) => {
   const date = new Date();
 
   const currentMonth = date.getMonth() + 1;
@@ -62,7 +62,7 @@ const checkLuhnAlgorithm = ({ PAN }) => {
 
 export {
   ccValidationAlgorithm,
-  checkExpiryData,
+  checkExpiryDate,
   checkLuhnAlgorithm,
   checkSecurityCode,
 };
