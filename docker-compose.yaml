@@ -17,6 +17,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: backend
+    environment:
+      - PORT=7100
     ports:
       - 7100:7100
     volumes:
