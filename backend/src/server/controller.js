@@ -1,4 +1,4 @@
-import { validateCreditCardFormat } from "../helpers/validateCreditCardFormat";
+import { validateCreditCardFormat } from "../helpers/checkCreditCardFormat";
 
 export const validate = async (req, res) => {
   if (!req.body.PAN || !req.body.CVV || !req.body.month || !req.body.year) {

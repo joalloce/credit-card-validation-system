@@ -1,13 +1,14 @@
 const validateCreditCardFormat = ({ CVV, month, PAN, year }) => {
-  if (!isCVVValid(CVV)) return false;
+  let errors = [];
+  if (!isCVVValid(CVV)) errors.push("CVV");
 
-  if (!isMonthValid(month)) return false;
+  if (!isMonthValid(month)) errors.push("month");
 
-  if (!isPANValid(PAN)) return false;
+  if (!isPANValid(PAN)) errors.push("PAN");
 
-  if (!isYearValid(year)) return false;
+  if (!isYearValid(year)) errors.push("year");
 
-  return true;
+  return errors;
 };
 
 const isCVVValid = (CVV) => {
@@ -30,12 +31,11 @@ const isMonthValid = (month) => {
 const isPANValid = (PAN) => {
   let allDigitsNumber = PAN.split("").every((d) => {
     let number = parseInt(d);
-    console.log(d, number);
     return Number.isInteger(number);
   });
   if (!allDigitsNumber) return false;
 
-  if (PAN.length < 16 || 19 < PAN.length) return false;
+  if (PAN.length < 15 || 19 < PAN.length) return false;
 
   return true;
 };
