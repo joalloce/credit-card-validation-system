@@ -1,6 +1,6 @@
 import express from "express";
 
-import { validate } from "controller";
+import { validate } from "./controller";
 
 const router = express.Router();
 
