@@ -1,4 +1,5 @@
-import { validateCreditCardFormat } from "../helpers/validateCreditCardFormat";
+import { ccValidationAlgorithm } from "#root/creditCardValidation/ccValidationAlgorithm";
+import { validateCreditCardFormat } from "#root/helpers/checkCreditCardFormat";
 
 export const validate = async (req, res) => {
   if (!req.body.PAN || !req.body.CVV || !req.body.month || !req.body.year) {
@@ -7,17 +8,18 @@ export const validate = async (req, res) => {
 
   let { PAN, CVV, month, year } = req.body;
 
-  let validFormat = validateCreditCardFormat({ CVV, PAN, month, year });
+  let errorFields = validateCreditCardFormat({ CVV, PAN, month, year });
 
-  if (!validFormat) {
-    return res.status(404).json({ errorFormat: "Invalid input format" });
+  if (errorFields.length) {
+    return res
+      .status(404)
+      .json({ error: "Please fill the fields correctly", errorFields });
   }
 
-  // validate credit card
-  let validCredictCardInfo = true;
-  if (!validCredictCardInfo) {
-    return res.status(200).json({ valid: false });
+  let errorsValidation = ccValidationAlgorithm({ CVV, month, PAN, year });
+  if (errorsValidation.length) {
+    return res.status(404).json({ valid: false, errorsValidation });
   }
 
-  res.status(200).json({ valid: true, PAN, CVV, month, year });
+  res.status(200).json({ valid: true });
 };

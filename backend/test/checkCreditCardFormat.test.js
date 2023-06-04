@@ -4,7 +4,7 @@ import {
   isPANValid,
   isYearValid,
   validateCreditCardFormat,
-} from "#root/helpers/validateCreditCardFormat";
+} from "#root/helpers/checkCreditCardFormat";
 
 describe("CVV", () => {
   test("321 is a valid CVV", () => {
@@ -52,8 +52,8 @@ describe("PAN", () => {
   test("12831729837127213682 is not a valid PAN. 20 digits", () => {
     expect(isPANValid("12831729837127213682")).toBe(false);
   });
-  test("237187321871841 is not a valid PAN. 15 digits", () => {
-    expect(isPANValid("237187321871841")).toBe(false);
+  test("23718732187184 is not a valid PAN. 14 digits", () => {
+    expect(isPANValid("23718732187184")).toBe(false);
   });
   test("1238712987398c34 is not a valid PAN", () => {
     expect(isPANValid("1238712987398c34")).toBe(false);
@@ -86,8 +86,8 @@ describe("Credit card information", () => {
         CVV: "342",
         month: "03",
         year: "34",
-      })
-    ).toBe(true);
+      }).length
+    ).toBe(0);
   });
   test("936618593f692835968, 6574, 09/43 is not a valid Credit card information", () => {
     expect(
@@ -97,7 +97,7 @@ describe("Credit card information", () => {
         month: "09",
         year: "43",
       })
-    ).toBe(false);
+    ).toContain("PAN");
   });
   test("835816486937178543, 3b4, 01/27 is not a valid Credit card information", () => {
     expect(
@@ -107,7 +107,7 @@ describe("Credit card information", () => {
         month: "01",
         year: "27",
       })
-    ).toBe(false);
+    ).toContain("CVV");
   });
   test("6491839582817482, 8594, 14/75 is not a valid Credit card information", () => {
     expect(
@@ -117,7 +117,7 @@ describe("Credit card information", () => {
         month: "14", //
         year: "75",
       })
-    ).toBe(false);
+    ).toContain("month");
   });
   test("482756184927384595, 581, 05/203 is not a valid Credit card information", () => {
     expect(
@@ -127,6 +127,6 @@ describe("Credit card information", () => {
         month: "05",
         year: "203", //
       })
-    ).toBe(false);
+    ).toContain("year");
   });
 });
