@@ -1,11 +1,11 @@
-const ccValidationAlgorithm = ({ CVV, month, PAN, year }) => {
+const ccValidationAlgorithm = ({ cvv, month, pan, year }) => {
   let errors = [];
 
   if (!checkExpiryDate({ month, year })) errors.push("ExpiryDate");
 
-  if (!checkSecurityCode({ PAN, CVV })) errors.push("SecurityCode");
+  if (!checkSecurityCode({ pan, cvv })) errors.push("SecurityCode");
 
-  if (!checkLuhnAlgorithm({ PAN })) errors.push("LuhnAlgorithm");
+  if (!checkLuhnAlgorithm({ pan })) errors.push("LuhnAlgorithm");
 
   return errors;
 };
@@ -31,12 +31,12 @@ const checkExpiryDate = ({ month, year }) => {
  * - Unless it’s an American Express card, in which case the CVV must be exactly 4 digits long
  * - American Express are cards whose PAN (card numbers) starts with either “34” or “37”
  */
-const checkSecurityCode = ({ PAN, CVV }) => {
-  var firstTwoDigits = PAN.substring(0, 2);
+const checkSecurityCode = ({ pan, cvv }) => {
+  var firstTwoDigits = pan.substring(0, 2);
   let isAMEX =
     firstTwoDigits === "34" || firstTwoDigits === "37" ? true : false;
 
-  if ((isAMEX && CVV.length === 4) || (!isAMEX && CVV.length === 3)) {
+  if ((isAMEX && cvv.length === 4) || (!isAMEX && cvv.length === 3)) {
     return true;
   } else {
     return false;
@@ -44,11 +44,11 @@ const checkSecurityCode = ({ PAN, CVV }) => {
 };
 
 // Last digit of the PAN (card number) is checked using Luhn’s algorithm
-const checkLuhnAlgorithm = ({ PAN }) => {
+const checkLuhnAlgorithm = ({ pan }) => {
   let sum = 0;
-  let parity = PAN.length % 2;
-  for (let i = 0; i < PAN.length; ++i) {
-    let currentDigit = parseInt(PAN[i]);
+  let parity = pan.length % 2;
+  for (let i = 0; i < pan.length; ++i) {
+    let currentDigit = parseInt(pan[i]);
     if (i % 2 != parity) {
       sum += currentDigit;
     } else if (currentDigit > 4) {

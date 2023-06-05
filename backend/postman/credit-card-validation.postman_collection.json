@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "validateCreditCard Invalid Body",
+			"name": "validateCreditCard Fill Fields",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -100,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"PAN\": \"122342332772\",\r\n    \"CVV\": \"123\",\r\n    \"month\": \"02\",\r\n    \"year\": \"32\"\r\n}",
+					"raw": "{\r\n    \"PAN\": \"4309678002102088\",\r\n    \"CVV\": \"123\",\r\n    \"month\": \"02\",\r\n    \"year\": \"05\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -152,7 +152,7 @@
 			"response": []
 		},
 		{
-			"name": "validateCreditCard Validation Algorithm",
+			"name": "validateCreditCard Failed Validation Algorithm 3",
 			"request": {
 				"method": "POST",
 				"header": [],

@@ -1,13 +1,21 @@
-import { useState } from "react";
-import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1> Hello World</h1>
-    </>
+    <div className="w-full bg-white max-w-lg">
+      <BrowserRouter>
+        <Navbar />
+        <div className="pt-6 px-[3vw]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
