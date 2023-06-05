@@ -1,6 +1,6 @@
 # Credit Card Validation System
 
-This app takes credit card information, then sends it to a backend API for validation. The backend should respond with either success or failure.
+This app takes credit card information, then sends it to a backend API for validation. The backend responds with either success or failure.
 
 The validation algorithm uses the following rules:
 
@@ -17,13 +17,7 @@ Why? Because AMEX credit card numbers are 15 digits long.
 
 ## Usage
 
-By default, the app runs with docker-compose.
-
-```
-docker-compose up
-```
-
-If you want to run the application separately, you have to run the following commands:
+To run this app, the following steps will get you up and running:
 
 In the backend folder:
 
@@ -40,6 +34,56 @@ npm run dev
 ```
 
 Then go to http://localhost:7000/
+
+You can also use docker-compose. (I think you have to run `npm install` in both backend and frontend to make it run.)
+
+```
+docker-compose up
+```
+
+## Test Cases
+
+1. Case #1:
+   Card Number: 378734493671000
+   CVV: 9562
+   Month: 03
+   Year: 34
+   Result: Valid :)
+
+2. Case #2:
+   Card Number: 371449635398430
+   CVV: 3432
+   Month: 03
+   Year: 34
+   Result: Invalid by Luhm Algorithm checksum.
+
+3. Case #3:
+   Card Number: 371449635398430
+   CVV: 3432
+   Month: 03
+   Year: 05
+   Result: Invalid expiry date. Invalid by Luhm Algorithm checksum.
+
+4. Case #4:
+   Card Number: 4309678002102088
+   CVV: 7284
+   Month: 03
+   Year: 28
+   Result: Invalid security code.
+
+5. Case #5:
+   Card Number: 482756184927384595
+   CVV: 581
+   Month: 14
+   Year: 28
+   Result: Please fill the fields correctly.
+
+6. Case #6:
+   Card Number: (Nothing)
+   CVV: 581
+   Month: (Nothing)
+   Year: 28
+   Result: Please fill in all fields.
 
 ## Test
 
