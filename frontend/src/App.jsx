@@ -5,10 +5,10 @@ import About from "./pages/About";
 
 function App() {
   return (
-    <div className="min-h-screen mx-auto max-w-2xl ">
+    <div className="w-full bg-white max-w-lg">
       <BrowserRouter>
         <Navbar />
-        <div className="pt-[150px] px-[3vw]">
+        <div className="pt-6 px-[3vw]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
