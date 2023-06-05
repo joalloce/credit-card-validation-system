@@ -17,7 +17,13 @@ Why? Because AMEX credit card numbers are 15 digits long.
 
 ## Usage
 
-To run this app, the following steps will get you up and running:
+By default, the app runs with docker-compose.
+
+```
+docker-compose up
+```
+
+If you want to run the application separately, the following steps will get you up and running:
 
 In the backend folder:
 
@@ -34,12 +40,6 @@ npm run dev
 ```
 
 Then go to http://localhost:7000/
-
-You can also use docker-compose. (I think you have to run `npm install` in both backend and frontend to make it run.)
-
-```
-docker-compose up
-```
 
 ## Test Cases
 

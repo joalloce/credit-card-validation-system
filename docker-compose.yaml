@@ -13,6 +13,7 @@ services:
       - 7000:7000
     volumes:
       - ./frontend:/opt/app
+      - /opt/app/node_modules
     command: sh -c "npm rebuild esbuild && npm run dev"
   backend:
     build:
@@ -25,3 +26,4 @@ services:
       - 7100:7100
     volumes:
       - ./backend:/opt/app
+      - /opt/app/node_modules
