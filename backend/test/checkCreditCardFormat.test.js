@@ -97,7 +97,7 @@ describe("Credit card information", () => {
         month: "09",
         year: "43",
       })
-    ).toContain("PAN");
+    ).toContain("pan");
   });
   test("835816486937178543, 3b4, 01/27 is not a valid Credit card information", () => {
     expect(
@@ -107,7 +107,7 @@ describe("Credit card information", () => {
         month: "01",
         year: "27",
       })
-    ).toContain("CVV");
+    ).toContain("cvv");
   });
   test("6491839582817482, 8594, 14/75 is not a valid Credit card information", () => {
     expect(

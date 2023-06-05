@@ -1,10 +1,10 @@
 const validateCreditCardFormat = ({ cvv, month, pan, year }) => {
   let errors = [];
-  if (!isCVVValid(cvv)) errors.push("CVV");
+  if (!isCVVValid(cvv)) errors.push("cvv");
 
   if (!isMonthValid(month)) errors.push("month");
 
-  if (!isPANValid(pan)) errors.push("PAN");
+  if (!isPANValid(pan)) errors.push("pan");
 
   if (!isYearValid(year)) errors.push("year");
 

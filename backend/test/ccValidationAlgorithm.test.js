@@ -76,7 +76,7 @@ describe("Credit Card Validation Algorithm", () => {
   test("79927398713, 342, 03/34 is valid", () => {
     expect(
       ccValidationAlgorithm({
-        pan: "79927398713",
+        pan: "79927398713", // 11 digits. It works, but not valid by PAN length
         cvv: "342",
         month: "03",
         year: "34",
@@ -106,7 +106,7 @@ describe("Credit Card Validation Algorithm", () => {
   test("45320151128336, is not valid (year)", () => {
     expect(
       ccValidationAlgorithm({
-        pan: "45320151128336",
+        pan: "45320151128336", // 14 digits. It works, but not valid by PAN length
         cvv: "432",
         month: "08",
         year: "05", //
