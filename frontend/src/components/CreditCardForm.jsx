@@ -11,7 +11,7 @@ const CreditCardForm = () => {
   const [errorDetails, setErrorDetails] = useState([]);
   const [success, setSuccess] = useState(false);
 
-  const URI = import.meta.env.VITE_BACKEND_URI;
+  const URI = import.meta.env.VITE_BACKEND_URI || "http://localhost:7100/api/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +24,6 @@ const CreditCardForm = () => {
 
     try {
       const response = await axios.post(`${URI}credit-card/`, ccInfo);
-      console.log(response);
       if (!response.data.valid) {
         setErrorDetails(response.data.errorsValidation);
       } else {
